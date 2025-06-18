@@ -6,6 +6,14 @@
   "main": "./dist/client-saas.umd.js",
   "module": "./dist/client-saas.es.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxhyxtrx/client-saas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wxhyxtrx/client-saas/issues"
+  },
+  "homepage": "https://github.com/wxhyxtrx/client-saas#readme",
   "exports": {
     ".": {
       "import": "./dist/client-saas.es.js",
