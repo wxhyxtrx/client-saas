@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# client-saas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`client-saas` is a TypeScript-based HTTP client for SAAS platform integration, built using Axios. It provides a `fetch` method that handles token-based communication, request/response separation (`in` and `out`), idempotency key generation, and automatic retrying.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔒 Token-based request authorization
+- 🔁 Built-in retry logic (default 3x)
+- 🧠 Separation of input/output requests (requestIn & requestOut)
+- 🆔 Auto-generated Idempotency Key support
+- ✅ Full TypeScript support
+- ⚙️ Axios-based with custom headers
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📦 Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```bash
+npm install client-saas
+# or
+yarn add client-saas
+``` 
+
+## 📦 Usage
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
+import { createClientSaas } from 'client-saas';
+
+const client = createClientSaas({
+  baseURL: 'https://api.example.com',
+  endpointIn: '/v1/in',
+  endpointOut: '/v1/out',
+  platformKey: 'your-platform-key',
+});
+
+const response = await client.fetch({
+  token: 'your-token',
+  headers: {
+    Authorization: 'Bearer your-token',
   },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
+  body: {
+    ClientId: 'CLIENT001',
+    UserId: 'USER001',
+    Subject: 'transaction',
+    SubjectType: 'web',
+    SubjectIdentifier: 'pos',
+    Action: 'report',
+    Date: '2025-06-18 00:00:00',
   },
-})
+});
+
+console.log(response);
+
 ```

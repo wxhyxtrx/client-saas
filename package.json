@@ -1,6 +1,6 @@
 {
   "name": "client-saas",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "middleware Qoin SAAS API client for web apps",
   "type": "module",
   "main": "./dist/client-saas.umd.js",

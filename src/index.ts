@@ -3,7 +3,7 @@ import type { AxiosRequestHeaders } from "axios";
 import axios from "axios";
 import { generateIdempotencyKey } from "./utils";
 
-export const createClientSaas = async (options: OptionClientSaas) => {
+export const createClientSaas = (options: OptionClientSaas) => {
   const { baseURL, endpointIn, endpointOut, platformKey } = options;
 
   const requestIn = async (
