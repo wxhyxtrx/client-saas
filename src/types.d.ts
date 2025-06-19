@@ -29,8 +29,7 @@ type OptionClientSaas = {
 type FetchParams = {
   headers: AxiosRequestHeaders;
   body: BodyRequest;
-  limit: number;
-  token: string;
+  limit?: number;
 };
 
 

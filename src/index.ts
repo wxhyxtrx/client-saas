@@ -42,9 +42,8 @@ export const createClientSaas = (options: OptionClientSaas) => {
   };
 
   const fetch = async <T>(params: FetchParams): Promise<ApiResponseOut<T> | undefined> => {
-    const { token, body, headers, limit = 3 } = params;
+    const { body, headers, limit = 3 } = params;
 
-    if (!token) throw new Error("Token not found");
     if (!platformKey) throw new Error("Platform Key not found");
 
     headers["PlatformKey"] = platformKey;

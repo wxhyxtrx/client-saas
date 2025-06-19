@@ -21,37 +21,33 @@
 npm install client-saas
 # or
 yarn add client-saas
-``` 
+```
 
 ## 📦 Usage
 
 ```js
-
-import { createClientSaas } from 'client-saas';
+import { createClientSaas } from "client-saas";
 
 const client = createClientSaas({
-  baseURL: 'https://api.example.com',
-  endpointIn: '/v1/in',
-  endpointOut: '/v1/out',
-  platformKey: 'your-platform-key',
+  baseURL: "https://api.example.com",
+  endpointIn: "/v1/in",
+  endpointOut: "/v1/out",
+  platformKey: "your-platform-key",
 });
 
 const response = await client.fetch({
-  token: 'your-token',
   headers: {
-    Authorization: 'Bearer your-token',
+    Authorization: "Bearer your-token",
   },
   body: {
-    ClientId: 'CLIENT001',
-    UserId: 'USER001',
-    Subject: 'transaction',
-    SubjectType: 'web',
-    SubjectIdentifier: 'pos',
-    Action: 'report',
-    Date: '2025-06-18 00:00:00',
+    ClientId: "CLIENT001",
+    UserId: "USER001",
+    Subject: "transaction",
+    SubjectType: "web",
+    SubjectIdentifier: "pos",
+    Action: "report",
+    Date: "2025-06-18 00:00:00",
   },
+  limit: 10,
 });
-
-console.log(response);
-
 ```
